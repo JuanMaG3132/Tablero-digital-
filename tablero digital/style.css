@@ -1,0 +1,32 @@
+body {
+  background-color: rgba(0, 0, 0, 0.658)
+}
+#tablero {
+  background-color: white;
+    border: 1px solid black;
+    margin: 20px auto;
+    display: block;
+  }
+  h1 {
+    text-align: center;
+    background-color: rgba(5, 5, 5, 0.24);
+    position: relative;
+    right: 100px;
+    left: 5px;
+    top: 10px;
+  }
+  #clear-button {
+    position: absolute;
+    top: 10px;
+    margin: 10px;
+    color: white;
+    border-radius: 10px;
+    border: 20px;
+    background-color: gray;
+    height: 1cm;
+    width: 2cm;
+  }
+button:hover {
+  cursor: pointer;
+}
+  

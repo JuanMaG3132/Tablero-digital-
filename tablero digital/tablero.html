@@ -1,0 +1,62 @@
+<HTML>
+    <link rel="stylesheet" href="style.css">
+    <canvas id="tablero" width="600" height="500"></canvas>
+    <body>
+      <h1>Tablero</h1>
+      <div class="clear-btn"> 
+      <button id="clear-button">Borrar</button>
+      </div>
+      <script>
+        window.onload = function() {
+          function drawLine(x1, y1, x2, y2) {
+            const canvas = document.getElementById('tablero');
+            const context = canvas.getContext('2d');
+      
+            context.beginPath();
+            context.moveTo(x1, y1);
+            context.lineTo(x2, y2);
+            context.stroke();
+          }
+      
+          let isDrawing = false;
+          let x1 = 0;
+          let y1 = 0;
+          let x2 = 0;
+          let y2 = 0;
+      
+          function handleMouseEvents(event) {
+            const canvas = document.getElementById('tablero');
+            const rect = canvas.getBoundingClientRect();
+      
+            if (event.type === 'mousedown') {
+              isDrawing = true;
+              x1 = event.clientX - rect.left;
+              y1 = event.clientY - rect.top;
+            } else if (event.type === 'mousemove' && isDrawing) {
+              x2 = event.clientX - rect.left;
+              y2 = event.clientY - rect.top;
+              drawLine(x1, y1, x2, y2);
+              x1 = x2;
+              y1 = y2;
+            } else if (event.type === 'mouseup') {
+              isDrawing = false;
+            }
+          }
+      
+          const canvas = document.getElementById('tablero');
+          canvas.addEventListener('mousedown', handleMouseEvents);
+          canvas.addEventListener('mousemove', handleMouseEvents);
+          canvas.addEventListener('mouseup', handleMouseEvents);
+          
+          const clearButton = document.getElementById('clear-button');
+          clearButton.addEventListener('click', function() {
+            const canvas = document.getElementById('tablero');
+            const context = canvas.getContext('2d');
+            context.clearRect(0, 0, canvas.width, canvas.height);
+          });
+        }
+      </script>
+    </body>
+  </HTML>
+  
+  
